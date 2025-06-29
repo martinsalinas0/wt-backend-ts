@@ -43,6 +43,8 @@ const getAllUsers = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+
+//update user profile
 const updateUserProfile = async (
   req: Request,
   res: Response
