@@ -1,9 +1,8 @@
-import mongoose, { Document, Schema, Model } from "mongoose";
+// import mongoose, { Document, Schema, Model } from "mongoose";
 
+// interface Job extends Document {
+//   name: string;
+//   category: string;
 
-interface Job extends Document { 
-  name: string; 
-  category: string; 
-
-}
-d
+// }
+// d

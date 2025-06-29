@@ -1,8 +1,8 @@
-import express from "express";
-import { getAllJobs } from "../controllers/jobs.controllers";
+// import express from "express";
+// import { getAllJobs } from "../controllers/jobs.controllers";
 
-const router = express.Router();
+// const router = express.Router();
 
-//route is "api/jobs/----"
+// //route is "api/jobs/----"
 
-router.get("/all", getAllJobs);
+// router.get("/all", getAllJobs);
