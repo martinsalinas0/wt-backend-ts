@@ -2,10 +2,13 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db";
+import passport from "./config/passport";
 
 dotenv.config();
 
 const app = express();
+app.use(passport.initialize());
+
 const PORT: number = parseInt(process.env.PORT || "8000", 10);
 
 app.use(cors());
@@ -15,6 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/api/home", (_req: Request, res: Response) => {
   res.send("MAINPAGE, WORKTOGETHER");
 });
+
+import { authRoutes } from "../src/routes/auth.routes";
+
+app.use("/api/auth/", authRoutes);
 
 const serverConnect = async (): Promise<void> => {
   try {
