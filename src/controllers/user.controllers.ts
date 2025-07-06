@@ -43,27 +43,39 @@ const getAllUsers = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-
 //update user profile
 const updateUserProfile = async (
   req: Request,
   res: Response
 ): Promise<void> => {
   try {
-    const { name, email, password, role } = req.params;
+    const { id, name, email, password, role, profilePic } = req.params;
+
+    const userUpdate = await User.findById(id);
+
+    if (!userUpdate) {
+      res.status(404).json({ message: "user does not exist", success: false });
+      return;
+    }
   } catch (error: any) {
     res.status(500).json({ message: error.message, success: false });
   }
 };
+
+//delete user profile
 const deleteUserProfile = async (
   req: Request,
   res: Response
 ): Promise<void> => {
   res.send("deleteUser");
 };
+
+//add user -(same as register?)
 const addUserProfile = async (req: Request, res: Response): Promise<void> => {
   res.send("addUser");
 };
+
+//just a test route
 const userBasic = async (req: Request, res: Response): Promise<void> => {
   res.send("userBasic");
 };
