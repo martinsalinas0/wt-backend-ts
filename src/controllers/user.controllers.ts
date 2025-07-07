@@ -1,9 +1,12 @@
 import { Response, Request } from "express";
 import User from "../models/users.models";
+import { checkForUser } from "../utils/checkForUser";
 
 //----
 //----
 //----
+//check for user
+
 //----
 //----
 //getUser by ID
@@ -11,12 +14,8 @@ const getUserProfile = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
 
-    const user = await User.findById(id).select("-password");
-
-    if (!user) {
-      res.status(404).json({ message: "User does not exist", success: false });
-      return;
-    }
+    //util function for checking if user exist
+    const user = await checkForUser(id);
 
     res.status(200).json({ user });
   } catch (error: any) {
@@ -49,14 +48,31 @@ const updateUserProfile = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { id, name, email, password, role, profilePic } = req.params;
+    const { id } = req.params;
+    const { name, email, role } = req.body;
 
-    const userUpdate = await User.findById(id);
+    const user = await checkForUser(id);
 
-    if (!userUpdate) {
-      res.status(404).json({ message: "user does not exist", success: false });
-      return;
-    }
+    if (name) user.name = name;
+    if (email) user.email = email;
+    if (role) user.role = role;
+
+    const updatedUser = await user.save();
+
+    res.status(200).json({ user: updatedUser, success: true });
+  } catch (error: any) {
+    res.status(404).json({ message: error.message, success: false });
+  }
+};
+
+//update user password
+const updateUserPassword = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const user = checkForUser(id);
   } catch (error: any) {
     res.status(500).json({ message: error.message, success: false });
   }
