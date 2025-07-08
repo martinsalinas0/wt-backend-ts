@@ -5,8 +5,6 @@ import { checkForUser } from "../utils/checkForUser";
 //----
 //----
 //----
-//check for user
-
 //----
 //----
 //getUser by ID
