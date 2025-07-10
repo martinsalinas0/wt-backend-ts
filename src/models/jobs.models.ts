@@ -1,8 +1,24 @@
-// import mongoose, { Document, Schema, Model } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 
-// interface Job extends Document {
-//   name: string;
-//   category: string;
+//declares what fields JOBS  will have
+//IJOBS = interface of jobs
+interface IJobs extends Document {
+  jobName: string;
+  cost: number;
+  createdAt?: Date;
+  postedBy: "contractor" | "sub-cee";
+}
 
-// }
-// d
+//the schema for mongoose
+const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
+  {
+    jobName: { type: String, required: true, trim: true, lowercase: true },
+    cost: { type: Number, required: true },
+    postedBy: { type: String, enum: ["contractor", "sub-cee"], required: true },
+  },
+  { timestamps: true }
+);
+
+const Jobs: Model<IJobs> = mongoose.model<IJobs>("Jobs", JobsSchema);
+
+export default Jobs;
