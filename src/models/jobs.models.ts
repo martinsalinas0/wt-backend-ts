@@ -6,7 +6,9 @@ interface IJobs extends Document {
   jobName: string;
   cost: number;
   createdAt?: Date;
-  postedBy: "contractor" | "sub-cee";
+  postedBy: "contractor" | "subcon";
+  location: String;
+  completeBy: String;
 }
 
 //the schema for mongoose
@@ -14,7 +16,7 @@ const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
   {
     jobName: { type: String, required: true, trim: true, lowercase: true },
     cost: { type: Number, required: true },
-    postedBy: { type: String, enum: ["contractor", "sub-cee"], required: true },
+    postedBy: { type: String, enum: ["contractor", "subcon"], required: true },
   },
   { timestamps: true }
 );
