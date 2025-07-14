@@ -9,6 +9,7 @@ interface IUser extends Document {
   role: "contractor" | "sub-cee";
   createdAt: Date;
   profilePic?: string;
+  rating: Number;
 }
 //This interface helps TypeScript understand what properties a user document will have, so your code has proper type checking and autocomplete.
 
@@ -28,6 +29,7 @@ const UserSchema: Schema<IUser> = new Schema({
   role: { type: String, enum: ["contractor", "sub-cee"], required: true },
   createdAt: { type: Date, default: Date.now },
   profilePic: { type: String, default: "none" },
+  rating: { type: Number, default: null },
 });
 
 // creates the Mongoose model named "User" with the schema and TypeScript type IUser.
