@@ -1,6 +1,6 @@
 import { Response, Request } from "express";
 import User from "../models/users.models";
-import { checkForUser } from "../utils/checkForUser";
+import { checkForUser } from "../utils/checkForUserById";
 
 //----
 //----
