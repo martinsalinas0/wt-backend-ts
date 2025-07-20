@@ -6,7 +6,7 @@ interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-  role: "contractor" | "sub-contractor";
+  role: "contractor" | "customer";
   createdAt: Date;
   profilePic?: string;
   rating: Number;
@@ -28,7 +28,7 @@ const UserSchema: Schema<IUser> = new Schema({
 
   role: {
     type: String,
-    enum: ["contractor", "sub-contractor"],
+    enum: ["contractor", "customer"],
     required: true,
   },
   createdAt: { type: Date, default: Date.now },

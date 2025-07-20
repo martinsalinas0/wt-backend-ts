@@ -70,6 +70,7 @@ const updateUserPassword = async (
 ): Promise<void> => {
   try {
     const { id } = req.params;
+
     const user = checkForUser(id);
   } catch (error: any) {
     res.status(500).json({ message: error.message, success: false });
@@ -81,7 +82,37 @@ const deleteUserProfile = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  res.send("deleteUser");
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      res.status(400).json({
+        message: "User ID is required",
+        success: false,
+      });
+      return;
+    }
+    let user;
+    try {
+      user = await checkForUser(id);
+    } catch (error) {
+      res.status(404).json({
+        message: "User not found, woring",
+        success: false,
+      });
+      return;
+    }
+    const deletedUser = await User.findByIdAndDelete(id);
+    res.status(200).json({
+      message: "user deleted",
+      success: true,
+      deletedUser: deletedUser,
+    });
+  } catch (error: any) {
+    res
+      .status(500)
+      .json({ message: error.message, success: false, why: "idk" });
+  }
 };
 
 //add user -(same as register?)

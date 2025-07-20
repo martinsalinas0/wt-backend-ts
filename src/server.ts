@@ -16,12 +16,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/api/home", (_req: Request, res: Response) => {
-  res.send("MAINPAGE, WORKTOGETHER");
+  res.send("MAINPAGE, let work on this");
 });
 
 import { authRoutes } from "../src/routes/auth.routes";
 import { userRoutes } from "./routes/user.routes";
-import {jobsRoutes } from "./routes/jobs.routes"
+// import { jobsRoutes } from "./routes/jobs.routes";
 
 app.use("/api/auth", authRoutes);
 app.use("/api", userRoutes);
@@ -39,6 +39,5 @@ const serverConnect = async (): Promise<void> => {
 };
 
 serverConnect();
-
 
 export default app;
