@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import User from "../models/users.models";
+//helper function to check for users
 import { checkForUser } from "../utils/checkForUserById";
 
 //----
