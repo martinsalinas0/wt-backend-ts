@@ -6,10 +6,11 @@ interface IJobs extends Document {
   jobName: string;
   cost: number;
   createdAt?: Date;
-  postedBy: "contractor" | "sub-contractor";
+  postedBy?: "contractor" | "sub-contractor";
   location: String;
   completeBy: String;
   category: Category;
+  bids?: Number;
 }
 
 //the schema for mongoose
@@ -19,15 +20,18 @@ const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
     cost: { type: Number, required: true },
     postedBy: {
       type: String,
-      enum: ["contractor", "sub-contractor"],
-      required: true,
+      enum: ["contractor", "customer"],
     },
-    location: { type: String, required: true },
+    location: { type: String, required: true, default: "city, state" },
     completeBy: { type: String, required: true },
     category: {
       type: String,
       enum: ["landscape", "plumbing", "electrician"],
       required: true,
+    },
+    bids: {
+      type: Number,
+      default: 0,
     },
   },
   { timestamps: true }

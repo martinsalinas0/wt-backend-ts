@@ -117,9 +117,9 @@ const deleteUserProfile = async (
 };
 
 //add user -(same as register?)
-const addUserProfile = async (req: Request, res: Response): Promise<void> => {
-  res.send("addUser");
-};
+// const addUserProfile = async (req: Request, res: Response): Promise<void> => {
+
+// };
 
 //just a test route
 const userBasic = async (req: Request, res: Response): Promise<void> => {
@@ -130,7 +130,6 @@ export {
   getUserProfile,
   updateUserProfile,
   deleteUserProfile,
-  addUserProfile,
   userBasic,
   getAllUsers,
 };
