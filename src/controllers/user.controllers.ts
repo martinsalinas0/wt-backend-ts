@@ -97,7 +97,7 @@ const deleteUserProfile = async (
       user = await checkForUser(id);
     } catch (error) {
       res.status(404).json({
-        message: "User not found, woring",
+        message: "User not found, working",
         success: false,
       });
       return;
