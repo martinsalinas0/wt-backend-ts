@@ -49,8 +49,33 @@ export const addNewJob = async (req: Request, res: Response): Promise<void> => {
 };
 
 //delete job
-
+export const deleteJob = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+    //add edge cases
+    //wrong id
+    //no job found
+    const jobToDelete = await Jobs.findByIdAndDelete(id);
+    res
+      .status(200)
+      .json({ message: "job successfully deleted", jobDeleted: jobToDelete });
+  } catch (error: any) {
+    res.status(500).json({ message: error.message, success: false });
+  }
+};
 //get job by id
+
+export const getJobById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+  } catch (error: any) {
+    const status500 = res
+      .status(500)
+      .json({ message: error.message, success: false });
+  }
+};
 
 //update job
 
