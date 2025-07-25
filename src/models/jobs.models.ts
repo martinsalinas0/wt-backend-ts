@@ -6,7 +6,7 @@ interface IJobs extends Document {
   jobName: string;
   jobCost: number;
   createdAt?: Date;
-  postedBy?: "contractor" | "sub-contractor";
+  postedBy?: string;
   jobLocation: String;
   jobCompleteByDate: String;
   jobCategory: Category;
@@ -20,13 +20,13 @@ export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
     jobCost: { type: Number, required: true },
     postedBy: {
       type: String,
-      enum: ["contractor", "customer"],
+      required: true,
     },
     jobLocation: { type: String, required: true, default: "city, state" },
     jobCompleteByDate: { type: String, required: true },
     jobCategory: {
       type: String,
-      enum: ["landscape", "plumbing", "electrician"],
+      enum: ["landscape", "plumbing", "electrician", "remodel"],
       required: true,
     },
     jobBids: {

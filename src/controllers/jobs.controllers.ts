@@ -25,27 +25,51 @@ export const getAllJobs = async (
 };
 
 //add new job
-
 export const addNewJob = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { jobName, location, cost, completeBy, category } = req.body;
-    if (!jobName || !location || !cost || !completeBy || !category) {
+    const {
+      jobName,
+      jobCost,
+      postedBy,
+      jobLocation,
+      jobCompleteByDate,
+      jobCategory,
+      jobBids,
+    } = req.body;
+    if (
+      !jobName ||
+      !jobCost ||
+      !postedBy ||
+      !jobLocation ||
+      !jobCompleteByDate ||
+      !jobCategory ||
+      !jobBids
+    ) {
       res.status(400).json({ message: "all fields required", success: false });
       return;
     }
 
     const newJob = await Jobs.create({
       jobName,
-      location,
-      cost,
-      completeBy,
-      category,
+      jobCost,
+      postedBy,
+      jobLocation,
+      jobCompleteByDate,
+      jobCategory,
+      jobBids,
     });
 
     res
       .status(201)
-      .json({ message: "new job created", jobName: jobName, success: true });
-  } catch (error) {}
+      .json({
+        message: "new job created",
+        jobName: jobName,
+        postedBy: postedBy,
+        success: true,
+      });
+  } catch (error: any) {
+    res.status(500).json({ message: error.message, susccess: false });
+  }
 };
 
 //delete job
@@ -63,8 +87,8 @@ export const deleteJob = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: error.message, success: false });
   }
 };
-//get job by id
 
+//get job by id
 export const getJobById = async (
   req: Request,
   res: Response
