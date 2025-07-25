@@ -4,32 +4,32 @@ import { Category } from "../utils/types";
 //IJOBS = interface of jobs
 interface IJobs extends Document {
   jobName: string;
-  cost: number;
+  jobCost: number;
   createdAt?: Date;
   postedBy?: "contractor" | "sub-contractor";
-  location: String;
-  completeBy: String;
-  category: Category;
-  bids?: Number;
+  jobLocation: String;
+  jobCompleteByDate: String;
+  jobCategory: Category;
+  jobBids?: Number;
 }
 
 //the schema for mongoose
 export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
   {
     jobName: { type: String, required: true, trim: true, lowercase: true },
-    cost: { type: Number, required: true },
+    jobCost: { type: Number, required: true },
     postedBy: {
       type: String,
       enum: ["contractor", "customer"],
     },
-    location: { type: String, required: true, default: "city, state" },
-    completeBy: { type: String, required: true },
-    category: {
+    jobLocation: { type: String, required: true, default: "city, state" },
+    jobCompleteByDate: { type: String, required: true },
+    jobCategory: {
       type: String,
       enum: ["landscape", "plumbing", "electrician"],
       required: true,
     },
-    bids: {
+    jobBids: {
       type: Number,
       default: 0,
     },
