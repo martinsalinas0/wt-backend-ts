@@ -1,5 +1,6 @@
 import { Response, Request } from "express";
 import User from "../models/users.models";
+//helper function to check for users
 import { checkForUser } from "../utils/checkForUserById";
 
 //----
@@ -116,9 +117,9 @@ const deleteUserProfile = async (
 };
 
 //add user -(same as register?)
-const addUserProfile = async (req: Request, res: Response): Promise<void> => {
-  res.send("addUser");
-};
+// const addUserProfile = async (req: Request, res: Response): Promise<void> => {
+
+// };
 
 //just a test route
 const userBasic = async (req: Request, res: Response): Promise<void> => {
@@ -129,7 +130,6 @@ export {
   getUserProfile,
   updateUserProfile,
   deleteUserProfile,
-  addUserProfile,
   userBasic,
   getAllUsers,
 };

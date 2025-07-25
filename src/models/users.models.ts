@@ -6,7 +6,7 @@ interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-  role: "contractor" | "customer";
+  role: string;
   createdAt: Date;
   profilePic?: string;
   rating: Number;
