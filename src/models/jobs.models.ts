@@ -13,7 +13,7 @@ interface IJobs extends Document {
 }
 
 //the schema for mongoose
-const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
+export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
   {
     jobName: { type: String, required: true, trim: true, lowercase: true },
     cost: { type: Number, required: true },
