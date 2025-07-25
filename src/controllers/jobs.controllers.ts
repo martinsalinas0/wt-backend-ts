@@ -79,4 +79,12 @@ export const getJobById = async (
 
 //update job
 
+export const updateJob = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+  } catch (error: any) {
+    res.status(500).json({ message: error.message, succeess: false });
+  }
+};
+
 //
