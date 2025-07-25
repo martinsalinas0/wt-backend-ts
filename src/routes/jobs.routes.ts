@@ -1,5 +1,9 @@
 import express from "express";
-import { addNewJob, getAllJobs } from "../controllers/jobs.controllers";
+import {
+  addNewJob,
+  deleteJob,
+  getAllJobs,
+} from "../controllers/jobs.controllers";
 
 const router = express.Router();
 
@@ -7,5 +11,6 @@ const router = express.Router();
 
 router.get("/all", getAllJobs);
 router.post("/new", addNewJob);
+router.delete("/delete/:id", deleteJob);
 
 export { router as jobsRoutes };

@@ -5,6 +5,7 @@
 
 import { Request, Response } from "express";
 import Jobs from "../models/jobs.models";
+import { isValidObjectId } from "mongoose";
 
 // export { getAllJobs };
 export const getAllJobs = async (
@@ -59,14 +60,12 @@ export const addNewJob = async (req: Request, res: Response): Promise<void> => {
       jobBids,
     });
 
-    res
-      .status(201)
-      .json({
-        message: "new job created",
-        jobName: jobName,
-        postedBy: postedBy,
-        success: true,
-      });
+    res.status(201).json({
+      message: "new job created",
+      jobName: jobName,
+      postedBy: postedBy,
+      success: true,
+    });
   } catch (error: any) {
     res.status(500).json({ message: error.message, susccess: false });
   }
@@ -76,13 +75,31 @@ export const addNewJob = async (req: Request, res: Response): Promise<void> => {
 export const deleteJob = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    //add edge cases
-    //wrong id
-    //no job found
+
+    if (!id) {
+      res.status(400).json({ message: "Job ID is required", success: false });
+      return;
+    }
+
+    if (!isValidObjectId(id)) {
+      res
+        .status(400)
+        .json({ message: "Invalid Job ID format", success: false });
+      return;
+    }
+
     const jobToDelete = await Jobs.findByIdAndDelete(id);
-    res
-      .status(200)
-      .json({ message: "job successfully deleted", jobDeleted: jobToDelete });
+
+    if (!jobToDelete) {
+      res.status(404).json({ message: "Job not found", success: false });
+      return;
+    }
+
+    res.status(200).json({
+      message: "Job successfully deleted",
+      success: true,
+      jobDeleted: jobToDelete,
+    });
   } catch (error: any) {
     res.status(500).json({ message: error.message, success: false });
   }
