@@ -1,0 +1,29 @@
+user => customers and contractors 
+
+user Model 
+name: 
+  firstName: 
+  lastName: 
+password: 
+username:
+emailPrimary:
+emailSecondary:
+_id: 
+rating: 
+
+
+user Customer.User
+  customerRating: 
+  customerAddress: 
+  customerRank: 
+
+
+
+
+
+user Contractor.User
+  contractorRating: 
+  businessName?: 
+  contractorIdNo: 
+  contractorPOC: 
+  
