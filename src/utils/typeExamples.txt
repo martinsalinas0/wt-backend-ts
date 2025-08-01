@@ -1,4 +1,12 @@
-user => customers and contractors 
+business facing to use with their contractors? 
+
+user { 
+  admin:
+  manager: 
+  employee:
+  contractor: 
+  customer: 
+}
 
 user Model 
 name: 
