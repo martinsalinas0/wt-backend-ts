@@ -1,7 +1,8 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import { Category } from "../utils/types";
 
-//declares what fields JOBS  will have
+//this interface decares and sets the fields that the Job model will have
+//sets the the name of the key and the type of value
 //IJOBS = interface of jobs
 interface IJobs extends Document {
   jobName: string;
