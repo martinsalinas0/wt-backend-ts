@@ -1,4 +1,4 @@
-business facing to use with their contractors? 
+
 
 user { 
   admin:
@@ -16,16 +16,13 @@ password:
 username:
 emailPrimary:
 emailSecondary:
-_id: 
-rating: 
+userPhoneNumber: 
+phoneNumberSecondary: 
 
 
 user Customer.User
   customerRating: 
   customerAddress: 
-  customerRank: 
-
-
 
 
 

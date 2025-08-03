@@ -1,5 +1,7 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import { Category } from "../utils/types";
+
+
 //declares what fields JOBS  will have
 //IJOBS = interface of jobs
 interface IJobs extends Document {
