@@ -5,7 +5,7 @@ type UserRole = "employee" | "contractor" | "customer" | "admin";
 
 //declares the fields a USER will have
 //IUser = interface of User
-interface IUser extends Document {
+export interface IUser extends Document {
   name: {
     firstName: string;
     lastName: string;
