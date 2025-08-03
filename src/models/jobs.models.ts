@@ -1,7 +1,6 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import { Category } from "../utils/types";
 
-
 //declares what fields JOBS  will have
 //IJOBS = interface of jobs
 interface IJobs extends Document {
@@ -12,7 +11,8 @@ interface IJobs extends Document {
   jobLocation: String;
   jobCompleteByDate: String;
   jobCategory: Category;
-  jobBids?: Number;
+  jobBids?: number;
+  forCustomer: string; //create the customer model to place here
 }
 
 //the schema for mongoose
