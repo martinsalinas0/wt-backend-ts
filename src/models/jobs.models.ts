@@ -55,6 +55,7 @@ export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
     },
     jobStatus: {
       type: String,
+      default: "unassigned",
       enum: [
         "unassigned",
         "assigned",
