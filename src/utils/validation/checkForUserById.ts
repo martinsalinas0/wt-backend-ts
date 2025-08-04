@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import User from "../models/users.models";
+import User from "../../models/users.models";
 
 export const checkForUser = async (id: string) => {
   if (!Types.ObjectId.isValid(id)) {
