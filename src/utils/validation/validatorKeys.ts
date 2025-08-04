@@ -67,6 +67,13 @@ const validateJobDescription = (description: string): string | null => {
   return null;
 };
 
+const validateJobBids = (bid: number): string | null => {
+  if (typeof bid !== "number" || bid < 0) {
+    return "Job cost must be a positive number";
+  }
+  return null;
+};
+
 export {
   validateJobName,
   validatePostedBy,
