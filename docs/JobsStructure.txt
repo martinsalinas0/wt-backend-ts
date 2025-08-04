@@ -1,0 +1,14 @@
+interface IJobs extends Document {
+  jobName: string;
+  jobCost: number;
+  createdAt: string;
+  postedBy: string;
+  jobLocation: string;
+  jobDeadline: string;
+  jobCategory: Category;
+  jobBids: number;
+  forCustomer: string; //create the customer model to place here
+  jobDescription: string;
+  jobNotes?: string;
+  //jobStatus: string; //ADD THIS
+}

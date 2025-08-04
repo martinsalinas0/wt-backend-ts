@@ -60,16 +60,23 @@ const validateJobCategory = (category: string): string | null => {
   return null;
 };
 
-const validateJobDescription = (description: string): string | null => {
-  if (!description || description.trim() === "") {
-    return "Description cannot be empty";
+const validateJobBids = (bid: number): string | null => {
+  if (typeof bid !== "number" || bid < 0) {
+    return "Job cost must be a positive number";
   }
   return null;
 };
 
-const validateJobBids = (bid: number): string | null => {
-  if (typeof bid !== "number" || bid < 0) {
-    return "Job cost must be a positive number";
+const validateForCustomer = (customer: string): string | null => {
+  if (!customer || customer.trim() === "") {
+    return "Customer field cannot be empty";
+  }
+  return null;
+};
+
+const validateJobDescription = (description: string): string | null => {
+  if (!description || description.trim() === "") {
+    return "Description cannot be empty";
   }
   return null;
 };
@@ -83,4 +90,5 @@ export {
   validateJobDescription,
   validateJobCost,
   validateJobBids,
+  validateForCustomer,
 };
