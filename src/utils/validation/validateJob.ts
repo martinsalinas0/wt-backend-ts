@@ -27,36 +27,36 @@ const validateJob = (data: JobData): string[] => {
   const errors: string[] = [];
 
   const jobNameError = validateJobName(data.jobName);
+  const jobCostError = validateJobCost(data.jobCost);
+  const postedByError = validatePostedBy(data.postedBy);
+  const locationError = validateJobLocation(data.jobLocation);
+  const deadlineError = validateJobDeadline(data.jobDeadline);
+  const categoryError = validateJobCategory(data.jobCategory);
+  const descriptionError = validateJobDescription(data.jobDescription);
+  const jobBidsError = validateJobBids(data.jobBids);
+  const customerError = validateForCustomer(data.forCustomer);
+
   if (jobNameError) errors.push(jobNameError);
 
-  const jobCostError = validateJobCost(data.jobCost);
   if (jobCostError) errors.push(jobCostError);
 
-  const postedByError = validatePostedBy(data.postedBy);
   if (postedByError) errors.push(postedByError);
 
-  const locationError = validateJobLocation(data.jobLocation);
   if (locationError) errors.push(locationError);
 
-  const deadlineError = validateJobDeadline(data.jobDeadline);
   if (deadlineError) errors.push(deadlineError);
 
-  const categoryError = validateJobCategory(data.jobCategory);
   if (categoryError) errors.push(categoryError);
 
-  const descriptionError = validateJobDescription(data.jobDescription);
   if (descriptionError) errors.push(descriptionError);
 
-  const jobBidsError = validateJobBids(data.jobBids);
   if (jobBidsError) {
     errors.push(jobBidsError);
   }
 
-  const customerError = validateForCustomer(data.forCustomer);
   if (customerError) {
     errors.push(customerError);
   }
-  // Optionally add validation for forCustomer, jobBids, jobNotes here if needed
 
   return errors;
 };
