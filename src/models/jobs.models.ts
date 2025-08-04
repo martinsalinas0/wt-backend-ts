@@ -14,6 +14,8 @@ interface IJobs extends Document {
   jobCategory: Category;
   jobBids?: number;
   forCustomer: string; //create the customer model to place here
+  jobDescription: string;
+  jobNotes?: string;
 }
 
 //the schema for mongoose
@@ -39,6 +41,15 @@ export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
     forCustomer: {
       type: String,
       required: true,
+      trim: true,
+    },
+    jobDescription: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    jobNotes: {
+      type: String,
       trim: true,
     },
   },
