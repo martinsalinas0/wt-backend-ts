@@ -37,6 +37,8 @@ export const addNewJob = async (req: Request, res: Response): Promise<void> => {
       jobCategory,
       jobBids,
       forCustomer,
+      jobDescription,
+      jobNotes,
     } = req.body;
     if (
       !jobName ||
@@ -46,25 +48,15 @@ export const addNewJob = async (req: Request, res: Response): Promise<void> => {
       !jobDeadline ||
       !jobCategory ||
       !jobBids ||
-      !forCustomer
+      !forCustomer ||
+      !jobDescription
     ) {
       res.status(400).json({ message: "all fields required", success: false });
       return;
     }
 
-    const newJob = await Jobs.create({
-      jobName,
-      jobCost,
-      postedBy,
-      jobLocation,
-      jobDeadline,
-      jobCategory,
-      jobBids,
-      forCustomer,
-    });
-
     res.status(201).json({
-      message: "new job created",
+      message: "New Job Created",
       jobName: jobName,
       postedBy: postedBy,
       success: true,
