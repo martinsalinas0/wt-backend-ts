@@ -10,5 +10,5 @@ interface IJobs extends Document {
   forCustomer: string; //create the customer model to place here
   jobDescription: string;
   jobNotes?: string;
-  //jobStatus: string; //ADD THIS
+  jobStatus: JobStatus
 }

@@ -5,8 +5,9 @@
 
 import { Request, Response } from "express";
 import Jobs from "../models/jobs.models";
-import { isValidObjectId } from "mongoose";
+import mongoose, { isValidObjectId } from "mongoose";
 import validateJob from "../utils/validation/validateJob";
+import { error } from "console";
 
 // export { getAllJobs };
 export const getAllJobs = async (
@@ -118,10 +119,25 @@ export const getJobById = async (
   res: Response
 ): Promise<void> => {
   try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      res
+        .status(400)
+        .json({ message: "Invalid job ID format", success: false });
+      return;
+    }
+
+    const job = await Jobs.findById(id).lean();
+
+    if (!job) {
+      res.status(404).json({ message: "Job not found", success: false });
+      return;
+    }
+
+    res.status(200).json({ job, success: true });
   } catch (error: any) {
-    const status500 = res
-      .status(500)
-      .json({ message: error.message, success: false });
+    res.status(500).json({ message: error.message, success: false });
   }
 };
 
