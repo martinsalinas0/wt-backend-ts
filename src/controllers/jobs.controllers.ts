@@ -6,7 +6,7 @@
 import { Request, Response } from "express";
 import Jobs from "../models/jobs.models";
 import { isValidObjectId } from "mongoose";
-import validateJob from "../utils/validateJob";
+import validateJob from "../utils/validation/validateJob";
 
 // export { getAllJobs };
 export const getAllJobs = async (

@@ -1,5 +1,5 @@
 // utils/validateJob.test.ts
-import { validateJob } from "./validateJob";
+import { validateJob } from "./validation/validateJob";
 
 describe("validateJob", () => {
   const validJob = {
