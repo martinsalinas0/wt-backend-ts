@@ -33,18 +33,20 @@ export const addNewJob = async (req: Request, res: Response): Promise<void> => {
       jobCost,
       postedBy,
       jobLocation,
-      jobCompleteByDate,
+      jobDeadline,
       jobCategory,
       jobBids,
+      forCustomer,
     } = req.body;
     if (
       !jobName ||
       !jobCost ||
       !postedBy ||
       !jobLocation ||
-      !jobCompleteByDate ||
+      !jobDeadline ||
       !jobCategory ||
-      !jobBids
+      !jobBids ||
+      !forCustomer
     ) {
       res.status(400).json({ message: "all fields required", success: false });
       return;
@@ -55,9 +57,10 @@ export const addNewJob = async (req: Request, res: Response): Promise<void> => {
       jobCost,
       postedBy,
       jobLocation,
-      jobCompleteByDate,
+      jobDeadline,
       jobCategory,
       jobBids,
+      forCustomer,
     });
 
     res.status(201).json({

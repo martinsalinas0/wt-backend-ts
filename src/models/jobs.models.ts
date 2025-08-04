@@ -9,8 +9,8 @@ interface IJobs extends Document {
   jobCost: number;
   createdAt?: Date;
   postedBy?: string;
-  jobLocation: String;
-  jobCompleteByDate: String;
+  jobLocation: string;
+  jobDeadline: string;
   jobCategory: Category;
   jobBids?: number;
   forCustomer: string; //create the customer model to place here
@@ -26,7 +26,7 @@ export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
       required: true,
     },
     jobLocation: { type: String, required: true, default: "city, state" },
-    jobCompleteByDate: { type: String, required: true },
+    jobDeadline: { type: String, required: true },
     jobCategory: {
       type: String,
       enum: ["landscape", "plumbing", "electrician", "remodel"],
@@ -35,6 +35,11 @@ export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
     jobBids: {
       type: Number,
       default: 0,
+    },
+    forCustomer: {
+      type: String,
+      required: true,
+      trim: true,
     },
   },
   { timestamps: true }
