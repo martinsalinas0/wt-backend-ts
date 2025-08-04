@@ -82,4 +82,5 @@ export {
   validateJobCategory,
   validateJobDescription,
   validateJobCost,
+  validateJobBids,
 };

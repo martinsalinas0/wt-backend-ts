@@ -6,6 +6,7 @@ import {
   validateJobLocation,
   validatePostedBy,
   validateJobCost,
+  validateJobBids,
 } from "./validatorKeys";
 
 interface JobData {
@@ -45,6 +46,10 @@ const validateJob = (data: JobData): string[] => {
   const descriptionError = validateJobDescription(data.jobDescription);
   if (descriptionError) errors.push(descriptionError);
 
+  const jobBidsError = validateJobBids(data.jobBids);
+  if (jobBidsError) {
+    errors.push(jobBidsError);
+  }
   // Optionally add validation for forCustomer, jobBids, jobNotes here if needed
 
   return errors;
