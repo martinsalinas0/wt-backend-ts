@@ -7,12 +7,12 @@ import { Category } from "../utils/types";
 interface IJobs extends Document {
   jobName: string;
   jobCost: number;
-  createdAt?: Date;
-  postedBy?: string;
+  createdAt: string;
+  postedBy: string;
   jobLocation: string;
   jobDeadline: string;
   jobCategory: Category;
-  jobBids?: number;
+  jobBids: number;
   forCustomer: string; //create the customer model to place here
   jobDescription: string;
   jobNotes?: string;
