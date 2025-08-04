@@ -1,5 +1,5 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
-import { Category } from "../utils/types";
+import { Category, JobStatus } from "../utils/types";
 
 //this interface decares and sets the fields that the Job model will have
 //sets the the name of the key and the type of value
@@ -16,6 +16,7 @@ interface IJobs extends Document {
   forCustomer: string; //create the customer model to place here
   jobDescription: string;
   jobNotes?: string;
+  jobStatus: JobStatus;
 }
 
 //the schema for mongoose
@@ -51,6 +52,18 @@ export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
     jobNotes: {
       type: String,
       trim: true,
+    },
+    jobStatus: {
+      type: String,
+      enum: [
+        "unassigned",
+        "assigned",
+        "on-progress",
+        "complete: needs invoice",
+        "complete: invoice sent",
+        "completed: closed job",
+      ],
+      required: true,
     },
   },
   { timestamps: true }

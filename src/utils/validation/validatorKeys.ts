@@ -81,6 +81,13 @@ const validateJobDescription = (description: string): string | null => {
   return null;
 };
 
+const validateJobStatus = (status: string): string | null => {
+  if (!status || status.trim() === "") {
+    return "Job Status field cannot be empty";
+  }
+  return null;
+};
+
 export {
   validateJobName,
   validatePostedBy,
@@ -91,4 +98,5 @@ export {
   validateJobCost,
   validateJobBids,
   validateForCustomer,
+  validateJobStatus,
 };

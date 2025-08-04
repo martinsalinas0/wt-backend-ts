@@ -4,3 +4,11 @@ export type Customer = {
   rating: string;
   addressHome: string;
 };
+
+export type JobStatus =
+  | "unassigned"
+  | "assigned"
+  | "on-progress"
+  | "complete: needs invoice"
+  | "complete: invoice sent"
+  | "completed: closed job";

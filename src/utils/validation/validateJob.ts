@@ -8,6 +8,7 @@ import {
   validateJobCost,
   validateJobBids,
   validateForCustomer,
+  validateJobStatus,
 } from "./validatorKeys";
 
 interface JobData {
@@ -21,6 +22,7 @@ interface JobData {
   forCustomer: string;
   jobDescription: string;
   jobNotes?: string;
+  jobStatus: string;
 }
 
 const validateJob = (data: JobData): string[] => {
@@ -35,6 +37,7 @@ const validateJob = (data: JobData): string[] => {
   const descriptionError = validateJobDescription(data.jobDescription);
   const jobBidsError = validateJobBids(data.jobBids);
   const customerError = validateForCustomer(data.forCustomer);
+  const jobStatusError = validateJobStatus(data.jobStatus);
 
   if (jobNameError) errors.push(jobNameError);
 
@@ -57,6 +60,8 @@ const validateJob = (data: JobData): string[] => {
   if (customerError) {
     errors.push(customerError);
   }
+
+  if (jobStatusError) errors.push(jobStatusError);
 
   return errors;
 };
