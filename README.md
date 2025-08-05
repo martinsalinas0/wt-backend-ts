@@ -1,6 +1,6 @@
-# wt-backend-ts
+# work Together Backend
 
-Backend API built with TypeScript, Express, MongoDB, and Passport.js for authentication.
+Backend API built with TypeScript, Express, NodeJS, MongoDB, and Passport.js for authentication.
 
 ---
 
