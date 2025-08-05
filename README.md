@@ -106,7 +106,7 @@ Jest & ts-jest
 Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
 
-License
+#License
 ISC License
 
 vbnet
