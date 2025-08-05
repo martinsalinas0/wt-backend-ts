@@ -96,6 +96,6 @@ export const JobSchema: Schema<IJob> = new Schema<IJob>(
   { timestamps: true }
 );
 
-const Job: Model<IJobs> = mongoose.model<IJobs>("Job", JobsSchema);
+const Job: Model<IJob> = mongoose.model<IJob>("Job", JobSchema);
 
 export default Job;
