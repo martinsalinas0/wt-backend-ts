@@ -29,7 +29,7 @@ interface JobData {
   jobDescription: string;
   jobNotes?: string;
   jobStatus: string;
-}
+} //yes?
 
 const validateJob = (data: JobData): string[] => {
   const errors: string[] = [];
