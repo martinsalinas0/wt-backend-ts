@@ -53,7 +53,7 @@ const updateUserProfile = async (
     const user = await checkForUser(id);
 
     if (name) user.name = name;
-    if (email) user.email = email;
+    if (email) user.emailPrimary = email;
     if (role) user.role = role;
 
     const updatedUser = await user.save();

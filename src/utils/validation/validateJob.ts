@@ -28,40 +28,22 @@ interface JobData {
 const validateJob = (data: JobData): string[] => {
   const errors: string[] = [];
 
-  const jobNameError = validateJobName(data.jobName);
-  const jobCostError = validateJobCost(data.jobCost);
-  const postedByError = validatePostedBy(data.postedBy);
-  const locationError = validateJobLocation(data.jobLocation);
-  const deadlineError = validateJobDeadline(data.jobDeadline);
-  const categoryError = validateJobCategory(data.jobCategory);
-  const descriptionError = validateJobDescription(data.jobDescription);
-  const jobBidsError = validateJobBids(data.jobBids);
-  const customerError = validateForCustomer(data.forCustomer);
-  const jobStatusError = validateJobStatus(data.jobStatus);
+  const validators: (string | null)[] = [
+    validateJobName(data.jobName),
+    validateJobCost(data.jobCost),
+    validatePostedBy(data.postedBy),
+    validateJobLocation(data.jobLocation),
+    validateJobDeadline(data.jobDeadline),
+    validateJobCategory(data.jobCategory),
+    validateJobDescription(data.jobDescription),
+    validateJobBids(data.jobBids),
+    validateForCustomer(data.forCustomer),
+    validateJobStatus(data.jobStatus),
+  ];
 
-  if (jobNameError) errors.push(jobNameError);
-
-  if (jobCostError) errors.push(jobCostError);
-
-  if (postedByError) errors.push(postedByError);
-
-  if (locationError) errors.push(locationError);
-
-  if (deadlineError) errors.push(deadlineError);
-
-  if (categoryError) errors.push(categoryError);
-
-  if (descriptionError) errors.push(descriptionError);
-
-  if (jobBidsError) {
-    errors.push(jobBidsError);
+  for (const error of validators) {
+    if (error) errors.push(error);
   }
-
-  if (customerError) {
-    errors.push(customerError);
-  }
-
-  if (jobStatusError) errors.push(jobStatusError);
 
   return errors;
 };

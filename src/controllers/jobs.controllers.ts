@@ -8,6 +8,7 @@ import Jobs from "../models/jobs.models";
 import mongoose, { isValidObjectId } from "mongoose";
 import validateJob from "../utils/validation/validateJob";
 import { error } from "console";
+import { checkForJobById } from "../utils/validation/checkForJob";
 
 // export { getAllJobs };
 export const getAllJobs = async (
@@ -141,14 +142,33 @@ export const getJobById = async (
   }
 };
 
-//update job
-
-export const updateJob = async (req: Request, res: Response): Promise<void> => {
+//update job by id
+export const updateJobById = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const { id } = req.params;
+
+    await checkForJobById(id);
+
+    const updatedJob = await Jobs.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!updatedJob) {
+      res.status(404).json({ message: "Job not found", success: false });
+      return;
+    }
+
+    res.status(200).json({
+      message: "Job updated successfully",
+      success: true,
+      updatedJob,
+    });
   } catch (error: any) {
-    res.status(500).json({ message: error.message, succeess: false });
+    res.status(500).json({ message: error.message, success: false });
   }
 };
-
 //
