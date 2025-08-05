@@ -4,12 +4,16 @@ import { Category, JobStatus } from "../utils/types";
 //this interface decares and sets the fields that the Job model will have
 //sets the the name of the key and the type of value
 //IJOBS = interface of jobs
-interface IJobs extends Document {
+interface IJob extends Document {
   jobName: string;
   jobCost: number;
-  createdAt: string;
   postedBy: string;
-  jobLocation: string;
+  jobLocation: {
+    street: string;
+    city: string;
+    state: string;
+    zipcode: string;
+  };
   jobDeadline: string;
   jobCategory: Category;
   jobBids: number;
@@ -17,10 +21,11 @@ interface IJobs extends Document {
   jobDescription: string;
   jobNotes?: string;
   jobStatus: JobStatus;
+  jobComplete: boolean;
 }
 
 //the schema for mongoose
-export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
+export const JobSchema: Schema<IJob> = new Schema<IJob>(
   {
     jobName: { type: String, required: true, trim: true, lowercase: true },
     jobCost: { type: Number, required: true },
@@ -28,7 +33,24 @@ export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
       type: String,
       required: true,
     },
-    jobLocation: { type: String, required: true, default: "city, state" },
+    jobLocation: {
+      city: {
+        type: String,
+        required: true,
+      },
+      street: {
+        type: String,
+        required: true,
+      },
+      state: {
+        type: String,
+        required: true,
+      },
+      zipcode: {
+        type: String,
+        required: true,
+      },
+    },
     jobDeadline: { type: String, required: true },
     jobCategory: {
       type: String,
@@ -66,10 +88,14 @@ export const JobsSchema: Schema<IJobs> = new Schema<IJobs>(
       ],
       required: true,
     },
+    jobComplete: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
 
-const Jobs: Model<IJobs> = mongoose.model<IJobs>("Jobs", JobsSchema);
+const Job: Model<IJobs> = mongoose.model<IJobs>("Job", JobsSchema);
 
-export default Jobs;
+export default Job;
