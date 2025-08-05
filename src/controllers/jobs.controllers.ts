@@ -4,7 +4,7 @@
 // };
 
 import { Request, Response } from "express";
-import Jobs from "../models/jobs.models";
+import Job from "../models/jobs.models";
 import mongoose, { isValidObjectId } from "mongoose";
 import validateJob from "../utils/validation/validateJob";
 import { error } from "console";
@@ -16,7 +16,7 @@ export const getAllJobs = async (
   res: Response
 ): Promise<void> => {
   try {
-    const allJobs = await Jobs.find();
+    const allJobs = await Job.find();
 
     if (allJobs.length === 0) {
       res.status(404).json({ message: "No jobs found", success: false });
@@ -55,7 +55,7 @@ export const addNewJob = async (req: Request, res: Response): Promise<void> => {
     } = req.body;
 
     // Create the new job entry in the database
-    const newJob = await Jobs.create({
+    const newJob = await Job.create({
       jobName,
       jobCost,
       postedBy,
@@ -97,7 +97,7 @@ export const deleteJob = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    const jobToDelete = await Jobs.findByIdAndDelete(id);
+    const jobToDelete = await Job.findByIdAndDelete(id);
 
     if (!jobToDelete) {
       res.status(404).json({ message: "Job not found", success: false });
@@ -129,7 +129,7 @@ export const getJobById = async (
       return;
     }
 
-    const job = await Jobs.findById(id).lean();
+    const job = await Job.findById(id).lean();
 
     if (!job) {
       res.status(404).json({ message: "Job not found", success: false });
@@ -152,7 +152,7 @@ export const updateJobById = async (
 
     await checkForJobById(id);
 
-    const updatedJob = await Jobs.findByIdAndUpdate(id, req.body, {
+    const updatedJob = await Job.findByIdAndUpdate(id, req.body, {
       new: true,
       runValidators: true,
     });

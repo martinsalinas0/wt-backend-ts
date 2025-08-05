@@ -2,13 +2,25 @@ interface JobData {
   jobName: string;
   jobCost: number;
   postedBy: string;
-  jobLocation: string;
+  jobLocation: {
+    city: string;
+    state: string;
+    street: string;
+    zipcode: string;
+  };
   jobDeadline: string;
   jobCategory: string;
   jobBids: number;
   forCustomer: string;
   jobDescription: string;
   jobNotes?: string;
+}
+
+interface JobLocation {
+  street: string;
+  city: string;
+  state: string;
+  zipcode: string | number;
 }
 
 const validateJobName = (name: string): string | null => {
@@ -32,10 +44,16 @@ const validatePostedBy = (postedBy: string): string | null => {
   return null;
 };
 
-const validateJobLocation = (location: string): string | null => {
-  if (!location || location.trim() === "") {
-    return "Location cannot be empty";
-  }
+const validateJobLocation = (location: JobLocation): string | null => {
+  if (!location) return "Location is required";
+
+  const { street, city, state, zipcode } = location;
+
+  if (!street?.trim()) return "Street is required";
+  if (!city?.trim()) return "City is required";
+  if (!state?.trim()) return "State is required";
+  if (!zipcode?.toString().trim()) return "Zipcode is required";
+
   return null;
 };
 

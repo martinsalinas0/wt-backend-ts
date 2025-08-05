@@ -11,11 +11,17 @@ import {
   validateJobStatus,
 } from "./validatorKeys";
 
+interface JobLocation {
+  street: string;
+  city: string;
+  state: string;
+  zipcode: string | number;
+}
 interface JobData {
   jobName: string;
   jobCost: number;
   postedBy: string;
-  jobLocation: string;
+  jobLocation: JobLocation;
   jobDeadline: string;
   jobCategory: string;
   jobBids: number;
