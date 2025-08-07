@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-# Work Together — Backend
-
-This is the **backend** for the **Work Together** job collaboration platform, built using Node.js, Express, and MongoDB. It exposes a RESTful API for job listings, authentication, and user management.
-=======
 # work Together Backend
 
 Backend API built with TypeScript, Express, NodeJS, MongoDB, and Passport.js for authentication.
->>>>>>> b7df840d547f866a82055b081268497ece2e2ee6
 
 ## 🚀 Tech Stack
 
