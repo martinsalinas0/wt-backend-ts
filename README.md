@@ -32,12 +32,11 @@ JWT_SECRET=your_jwt_secret
 npm run dev
 ```
 
-Server will run on `http://localhost:5000`.
+Server will run on `http://localhost:8000/api`.
 
 API Endpoints
-Home
+--- see routes folder
 GET /api/home
-Returns a basic welcome message.
 
 Authentication
 Routes under /api/auth
@@ -60,7 +59,9 @@ bash
 Copy
 Edit
 npm test
-Technologies Used
+
+## Technologies Used
+
 Node.js & Express
 
 TypeScript
