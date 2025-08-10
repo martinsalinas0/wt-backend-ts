@@ -1,4 +1,4 @@
-# work Together Backend
+# Work Together Backend files
 
 Backend API built with TypeScript, Express, NodeJS, MongoDB, and Passport.js for authentication.
 
@@ -34,9 +34,6 @@ npm run dev
 
 Server will run on `http://localhost:5000`.
 
-<<<<<<< HEAD
-## 🗂️ Project Structure
-=======
 API Endpoints
 Home
 GET /api/home
@@ -91,7 +88,6 @@ Copy
 Edit
 
 Replace `<your-repo-url>`, `<your-mongodb-connection-string>`, and `<your-jwt-secret>` with your actual values.
->>>>>>> b7df840d547f866a82055b081268497ece2e2ee6
 
 ```
 wt-backend-ts/
