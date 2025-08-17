@@ -12,3 +12,5 @@ export type JobStatus =
   | "complete: needs invoice"
   | "complete: invoice sent"
   | "completed: closed job";
+
+export type UserRole = "employee" | "contractor" | "customer" | "admin";

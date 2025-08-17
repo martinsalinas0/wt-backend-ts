@@ -1,13 +1,15 @@
 import mongoose, { Document, Schema, Model } from "mongoose";
+import { UserRole } from "../utils/types";
 
 //creates a type for the user role
-type UserRole = "employee" | "contractor" | "customer" | "admin";
 
 //declares the fields a USER will have
 //IUser = interface of User
+//export this to a user => admin, manager, contractor, customer
 export interface IUser extends Document {
   name: {
     firstName: string;
+
     lastName: string;
   };
   password: string;

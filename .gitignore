@@ -52,3 +52,5 @@ build/Release
 # Misc
 *.tgz
 .yarn-integrity
+
+.notes.txt
