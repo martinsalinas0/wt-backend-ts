@@ -51,7 +51,8 @@ Jobs
 Routes under /api/jobs
 Create, read, update, and delete job postings.
 
-Testing
+## Testing
+
 This project uses Jest for testing with TypeScript support via ts-jest.
 
 Run all tests:
@@ -79,7 +80,8 @@ dotenv
 
 Jest & ts-jest
 
-Contributing
+## Contributing
+
 Contributions are welcome! Feel free to open issues or submit pull requests.
 
 #License
