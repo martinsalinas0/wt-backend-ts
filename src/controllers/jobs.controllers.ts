@@ -10,7 +10,7 @@ import validateJob from "../utils/validation/validateJob";
 import { error } from "console";
 import { checkForJobById } from "../utils/validation/checkForJob";
 
-// export { getAllJobs };
+//get all jobs
 export const getAllJobs = async (
   req: Request,
   res: Response

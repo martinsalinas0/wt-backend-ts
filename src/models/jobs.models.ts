@@ -54,7 +54,7 @@ export const JobSchema: Schema<IJob> = new Schema<IJob>(
     jobDeadline: { type: String, required: true },
     jobCategory: {
       type: String,
-      enum: ["landscape", "plumbing", "electrician", "remodel"],
+      enum: ["landscape", "plumbing", "electrical", "remodel"],
       required: true,
     },
     jobBids: {
