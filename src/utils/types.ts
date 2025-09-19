@@ -1,4 +1,9 @@
-export type Category = "landscape" | "plumbing" | "electrical";
+export type Category =
+  | "landscape"
+  | "plumbing"
+  | "electrical"
+  | "remodel"
+  | "other";
 
 export type Customer = {
   rating: string;
