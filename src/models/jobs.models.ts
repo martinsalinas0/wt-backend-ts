@@ -60,7 +60,7 @@ export const JobSchema: Schema<IJob> = new Schema<IJob>(
     },
     jobBids: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     forCustomer: {
       type: String,

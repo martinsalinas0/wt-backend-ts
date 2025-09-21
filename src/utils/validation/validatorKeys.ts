@@ -31,7 +31,7 @@ const validateJobName = (name: string): string | null => {
 };
 
 const validateJobCost = (price: number): string | null => {
-  if (typeof price !== "number" || price < 0) {
+  if (price < 0) {
     return "Job cost must be a positive number";
   }
   return null;
@@ -79,7 +79,7 @@ const validateJobCategory = (category: string): string | null => {
 };
 
 const validateJobBids = (bid: number): string | null => {
-  if (typeof bid !== "number" || bid < 0) {
+  if (bid < 0) {
     return "Job bid must be a positive number";
   }
   return null;
